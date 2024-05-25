@@ -1,0 +1,115 @@
+﻿@using Frontend.Filters
+@using System.ComponentModel.DataAnnotations
+
+<section id="subscribe">
+    <div class="container">
+        <div class="title">
+            <h2>Don't Want to Miss Anything</h2>
+            <img src="/images/icons/arrow.svg" alt="swirl arrow" />
+        </div>
+        <EditForm Model="check" method="post"  FormName="newsletter">
+             <div class="alternative">
+                    <h4>Sign up for Newsletters</h4>
+                    <div class="options">
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.DailyNewsletter"   aria-required="true"  /> 
+                                <label>DailyNewsletter</label>
+                                <ValidationMessage For="() => check.DailyNewsletter" />
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.AdvertisingUpdates"  aria-required="true" />
+                                <label>Advertising Updates</label>
+                                <ValidationMessage For="() => check.AdvertisingUpdates" />
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.WeekinReview" aria-required="true" />
+                                <label>Weekin Review</label>
+                                <ValidationMessage For="() => check.WeekinReview" />
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.EventUpdates" aria-required="true" />
+                                <label>Weekin EventUpdates</label>
+                                <ValidationMessage For="() => check.EventUpdates" />
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.StartupWeekly" aria-required="true" />
+                                <label>Weekin StartupWeekly</label>
+                                <ValidationMessage For="() => check.StartupWeekly" />
+                            </div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="input-gtoup">
+                                <InputCheckbox @bind-Value="check.Podcasts" aria-required="true" />
+                                <label>Podcasts</label>
+                                <ValidationMessage For="() => check.Podcasts" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-email">
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope"></i>
+                        <InputText type="email" @bind-Value="check.Email"  aria-required="true" placeholder="Enter your email" />
+                        <ValidationMessage For="() => check.Email" />
+                    </div>
+                    <button type="submit" class="btn btn-theme">Subscribe</button>
+                </div>
+            
+
+        </EditForm>
+    </div>
+</section>
+
+
+
+@code{
+    [SupplyParameterFromForm]
+    private CheckboxModel check { get; set; } = new();
+
+
+
+
+
+    private sealed class CheckboxModel
+    {
+        
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool DailyNewsletter { get; set; }
+
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool AdvertisingUpdates { get; set; }
+
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool WeekinReview { get; set; }
+
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool EventUpdates { get; set; }
+
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool StartupWeekly { get; set; }
+
+        [CheckboxRequired]
+        [Display(Name = "I agree to the Terms & Conditions", Prompt = "Terms and Conditions")]
+        public bool Podcasts { get; set; }
+
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; } = "";
+    }
+}
