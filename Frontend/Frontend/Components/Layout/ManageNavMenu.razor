@@ -5,7 +5,7 @@
 @rendermode InteractiveAuto
 <nav>
     <NavLink href="/account/details" class="btn-nav" Match="NavLinkMatch.All"><i class="fa-regular fa-cog"></i><span>Account Details</span></NavLink>
-    <NavLink @onclick="HandleSignOut" class="btn-theme"><i class="fa-regular fa-arrow-right-from-bracket"></i><span>Sign out</span></NavLink>
+    <NavLink href="/" @onclick="HandleSignOut" class="btn-theme"><i class="fa-regular fa-arrow-right-from-bracket"></i><span>Sign out</span></NavLink>
 </nav>
 
 @code {

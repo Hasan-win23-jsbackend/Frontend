@@ -34,17 +34,11 @@ else
 @code {
     [CascadingParameter]
     private HttpContext HttpContext { get; set; } = default!;
-    private ApplicationUser user = default!;
+    [Parameter]
+    public ApplicationUser user { get; set; } = default!;
     private MultipartFormDataContent uploadModel = new MultipartFormDataContent();
     private IBrowserFile? selectedFile;
 
-    
-
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadUserDataAsync();
-
-    }
     
 
     private void HandleFileSelected(InputFileChangeEventArgs e)
